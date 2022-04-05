@@ -126,7 +126,9 @@ export default function ReactSearchAutocomplete<T>({
         case 'Enter':
           setResults([])
           onSelect(results[highlightedItem])
-          setSearchString(results[highlightedItem][resultStringKeyName])
+          if (!results[highlightedItem]) {
+            setSearchString(results[highlightedItem][resultStringKeyName]);
+          }
           setHighlightedItem(0)
           break
         case 'ArrowUp':
